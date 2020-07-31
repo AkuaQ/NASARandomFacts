@@ -10,14 +10,14 @@ import Foundation
 
 struct RandomFactsRequest {
   let dateQuery: String
-  let defaultSession = URLSession(configuration: .default)
+  let defaultNasaSearchSession = URLSession(configuration: .default)
   var dataTask: URLSessionDataTask?
   
   func getSearchResult(completionHandler: @escaping(RandomFacts) -> Void) {
     dataTask?.cancel()
- 
+    
     let resourseSearchStr = "https://api.nasa.gov/planetary/apod?date=" + dateQuery + "&api_key=DEMO_KEY"
-    guard let resourceURL = URL(string: resourseSearchStr) else {fatalError()}
+    guard let resourceURL = URL(string: resourseSearchStr) else {fatalError("Cannot connect right now")}
     
     let dataTask = URLSession.shared.dataTask(with: resourceURL) {data, response, error in
       
@@ -40,6 +40,6 @@ struct RandomFactsRequest {
   }
   
   public init(dateQuery: String) {
-      self.dateQuery = dateQuery
+    self.dateQuery = dateQuery
   }
 }

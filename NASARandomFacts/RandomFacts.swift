@@ -8,12 +8,22 @@
 
 import Foundation
 
-struct RandomFacts: Decodable {
-  var date: String
-  var explanation: String
+struct RandomFacts: Codable {
+  var date: String?
+  var explanation: String?
   var hdurl: String?
-  var media_type: String
-  var service_version: String
-  var title: String
+  var mediaType: String?
+  var serviceVersion: String?
+  var title: String?
   var url: String?
+  
+  enum CodingKeys: String, CodingKey {
+    case date
+    case explanation
+    case hdurl
+    case mediaType = "media_type"
+    case serviceVersion = "service_version"
+    case title
+    case url
+  }
 }
