@@ -16,6 +16,8 @@
 		376C79E624D3D35200DA6A25 /* NASARandomFactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C79E524D3D35200DA6A25 /* NASARandomFactsTests.swift */; };
 		376C79F124D3D8FF00DA6A25 /* RandomFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C79F024D3D8FF00DA6A25 /* RandomFacts.swift */; };
 		376C79F324D3D91F00DA6A25 /* RandomFactsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C79F224D3D91F00DA6A25 /* RandomFactsRequest.swift */; };
+		376C79FC24D4350E00DA6A25 /* RandomFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C79FB24D4350E00DA6A25 /* RandomFactsViewModel.swift */; };
+		376C79FE24D4355700DA6A25 /* RandomFactsViewModelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C79FD24D4355700DA6A25 /* RandomFactsViewModelable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		376C79E724D3D35200DA6A25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		376C79F024D3D8FF00DA6A25 /* RandomFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomFacts.swift; sourceTree = "<group>"; };
 		376C79F224D3D91F00DA6A25 /* RandomFactsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomFactsRequest.swift; sourceTree = "<group>"; };
+		376C79FB24D4350E00DA6A25 /* RandomFactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomFactsViewModel.swift; sourceTree = "<group>"; };
+		376C79FD24D4355700DA6A25 /* RandomFactsViewModelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomFactsViewModelable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 		376C79CD24D3D34C00DA6A25 /* NASARandomFacts */ = {
 			isa = PBXGroup;
 			children = (
+				376C79FA24D434F200DA6A25 /* View Model */,
 				376C79CE24D3D34C00DA6A25 /* AppDelegate.swift */,
 				376C79D024D3D34C00DA6A25 /* SceneDelegate.swift */,
 				376C79D224D3D34C00DA6A25 /* ViewController.swift */,
@@ -103,6 +108,15 @@
 				376C79E724D3D35200DA6A25 /* Info.plist */,
 			);
 			path = NASARandomFactsTests;
+			sourceTree = "<group>";
+		};
+		376C79FA24D434F200DA6A25 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				376C79FB24D4350E00DA6A25 /* RandomFactsViewModel.swift */,
+				376C79FD24D4355700DA6A25 /* RandomFactsViewModelable.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +223,9 @@
 				376C79D324D3D34C00DA6A25 /* ViewController.swift in Sources */,
 				376C79CF24D3D34C00DA6A25 /* AppDelegate.swift in Sources */,
 				376C79F324D3D91F00DA6A25 /* RandomFactsRequest.swift in Sources */,
+				376C79FC24D4350E00DA6A25 /* RandomFactsViewModel.swift in Sources */,
 				376C79F124D3D8FF00DA6A25 /* RandomFacts.swift in Sources */,
+				376C79FE24D4355700DA6A25 /* RandomFactsViewModelable.swift in Sources */,
 				376C79D124D3D34C00DA6A25 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

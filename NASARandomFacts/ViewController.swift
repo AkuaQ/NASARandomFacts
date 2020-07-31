@@ -12,6 +12,9 @@ class ViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var searchBar: UISearchBar!
+  lazy var viewModel: RandomFactsViewModel = {
+      return RandomFactsViewModel(view: self)
+  }()
   var randomFactsItems = [RandomFacts](){
     didSet {
       DispatchQueue.main.async {
@@ -23,9 +26,8 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     searchBar.delegate = self
-    let randomFactRequest = RandomFactsRequest(dateQuery: "2015-09-09")
-    randomFactRequest.getSearchResult{result in
-      self.randomFactsItems.append(result)
+    viewModel.getWeeklyRandomsFacts(from: viewModel.getRandomDate()) {result in
+      self.randomFactsItems = result
     }
   }
 }
@@ -47,10 +49,12 @@ extension ViewController: UITableViewDataSource {
 extension ViewController : UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     if let searchBarText = searchBar.text {
-      let randomFactRequest = RandomFactsRequest(dateQuery: searchBarText)
-      randomFactRequest.getSearchResult{result in
-        self.randomFactsItems.append(result)
+      viewModel.getWeeklyRandomsFacts(from: searchBarText) {result in
+        self.randomFactsItems = result
       }
     }
   }
 }
+
+protocol Viewable: class {}
+extension ViewController: Viewable {}
