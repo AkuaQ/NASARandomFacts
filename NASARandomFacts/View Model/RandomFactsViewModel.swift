@@ -91,7 +91,7 @@ struct RandomFactsViewModel: RandomFactsViewModelable {
     var listOfFacts = [RandomFacts]()
     
     /* Get weekly list of random facts */
-    while daysToAdd < 2 {
+    while daysToAdd < 8 {
       dateComponent.day = daysToAdd - (indexOfWeekDay - 1)
       let weekDayDate = calendar.date(byAdding: dateComponent, to: convertedDate)
       let randomFactRequest = RandomFactsRequest(dateQuery: formatter.string(from: weekDayDate ?? Date()))
