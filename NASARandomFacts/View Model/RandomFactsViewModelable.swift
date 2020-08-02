@@ -9,7 +9,9 @@
 import Foundation
 
 protocol RandomFactsViewModelable {
-  func getRandomDate() -> String
-  func getWeeklyRandomsFacts(from date: String, completionHandler: @escaping([RandomFacts]) -> Void)
+  func getRandomDate() -> Date
+  func convertToString(from date: Date) -> String
+  func convertToDate(from str: String) -> Date
+  func getRandomsFacts(from date: Date, completionHandler: @escaping(Result<RandomFacts, RandomFactsError>) -> Void)
 }
 
