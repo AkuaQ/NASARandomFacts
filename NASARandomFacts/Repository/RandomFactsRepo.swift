@@ -18,7 +18,7 @@ struct RandomFactsRepo: RandomFactsRepositorable {
     formatter.dateFormat = "yyyy-MM-dd"
     
     let resourceSearchStr = NASAURLComponents.specificRandomFactsURL + formatter.string(from: date) + NASAURLComponents.personalAPIURLKey
-    guard let resourceURL = URL(string: resourceSearchStr) else {fatalError("Cannot connect right now")}
+    guard let resourceURL = URL(string: resourceSearchStr) else {return}
     
     let dataTask = URLSession.shared.dataTask(with: resourceURL) {data, response, error in
       
