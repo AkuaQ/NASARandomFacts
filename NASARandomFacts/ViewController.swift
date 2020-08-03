@@ -66,6 +66,7 @@ class ViewController: UIViewController {
     datePicker?.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
     datePicker?.maximumDate = viewModel.getMaxDate()
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+    tapGesture.cancelsTouchesInView = false
     view.addGestureRecognizer(tapGesture)
   }
   
