@@ -16,7 +16,6 @@ struct RandomFactsRepo: RandomFactsRepositorable {
     dataTask?.cancel()
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd"
-    
     let resourceSearchStr = NASAURLComponents.specificRandomFactsURL + formatter.string(from: date) + NASAURLComponents.personalAPIURLKey
     guard let resourceURL = URL(string: resourceSearchStr) else {return}
     

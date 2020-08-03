@@ -78,6 +78,7 @@ class ViewController: UIViewController {
     guard let datePicker = datePicker else {
       return
     }
+    
     inputDateTextField.text = viewModel.convertToString(from: datePicker.date)
     view.endEditing(true)
   }
@@ -89,8 +90,7 @@ extension ViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      
+    if editingStyle == .delete {  
       randomFactsItems.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
@@ -118,8 +118,7 @@ extension ViewController: UITableViewDataSource {
         cell.pictureImageView.downloadImage(from: url)
       } else if let imageHDURL = imageHDURL {
         guard let url = URL(string: imageHDURL) else {fatalError("Unable to connect to server")}
-        cell.pictureImageView.downloadImage(from: url)
-        
+        cell.pictureImageView.downloadImage(from: url)   
       } else {
         cell.pictureImageView.image = UIImage(named: "noImage")
       }
@@ -134,6 +133,7 @@ extension UIImageView {
   func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
     URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
   }
+  
   func downloadImage(from url: URL) {
     getData(from: url) {data, _, error in
       guard let data = data, error == nil else {return}
@@ -148,6 +148,7 @@ protocol Viewable: class {
   func displayMessage(of error: RandomFactsError)
   func dismissErrorMessage()
 }
+
 extension ViewController: Viewable {
   func displayMessage(of error: RandomFactsError) {
     errorLabel.isHidden = false
