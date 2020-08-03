@@ -140,7 +140,7 @@ struct RandomFactsViewModel: RandomFactsViewModelable {
   }
   
   /**
-   Gets a random fact from a API call
+   Gets a random fact from an API call
    */
   func getRandomsFacts(from date: Date, completionHandler: @escaping(Result<RandomFacts, RandomFactsError>) -> Void) {
     formatter.dateFormat = "yyyy-MM-dd"
