@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RandomFactsRepo {
+struct RandomFactsRepo: RandomFactsRepositorable {
   let defaultNasaSearchSession = URLSession(configuration: .default)
   var dataTask: URLSessionDataTask?
   
@@ -17,7 +17,7 @@ struct RandomFactsRepo {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd"
     
-    let resourceSearchStr = "https://api.nasa.gov/planetary/apod?date=" + formatter.string(from: date) + "&api_key=DEMO_KEY"
+    let resourceSearchStr = NASAURLComponents.specificRandomFactsURL + formatter.string(from: date) + NASAURLComponents.personalAPIURLKey
     guard let resourceURL = URL(string: resourceSearchStr) else {fatalError("Cannot connect right now")}
     
     let dataTask = URLSession.shared.dataTask(with: resourceURL) {data, response, error in
