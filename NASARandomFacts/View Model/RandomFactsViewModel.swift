@@ -63,7 +63,6 @@ struct RandomFactsViewModel: RandomFactsViewModelable {
     return randomYear
   }
   
-  
   /**
    Calculates a random month. The random month holds a boundary restriction of the lowest month in lowest year being June & the highest month in highest year being current month
    - Returns: a random month of type Int
@@ -93,10 +92,10 @@ struct RandomFactsViewModel: RandomFactsViewModelable {
     let highestMonthInHighestYear = calendar.component(.month, from: getMaxDate())
     let lowestYear = calendar.component(.year, from: getMinDate())
     let highestYear = calendar.component(.year, from: getMaxDate())
-    
     var randomDay: Int
     let lowestDayInLowestYearAndMonth = 16
     let highestDayInHighestYearAndMonth = calendar.component(.day, from: getMaxDate())
+    
     //Calculate number of days in month
     let endDay = getNumberOfDays(in: randomMonth, for: randomYear)
     if randomMonth == lowestMonthInLowestYear && randomYear == lowestYear {
@@ -159,7 +158,6 @@ struct RandomFactsViewModel: RandomFactsViewModelable {
         }
         completionHandler(.failure(error))
         break
-        
       }
     }
   }
