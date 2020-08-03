@@ -44,13 +44,16 @@ class ViewController: UIViewController {
   @IBAction func searchButtonTapped(_ sender: UIButton) {
     let dateChosen = inputDateTextField.text
     
-    if let dateChosen = dateChosen {
+    if inputDateTextField.text == "" {
+      errorLabel.text = "Choose a date below"
+      errorLabel.isHidden = false
+    } else if let dateChosen = dateChosen {
       viewModel.getRandomsFacts(from: viewModel.convertToDate(from: dateChosen)) {result in
         switch result {
         case .success(let randomFact):
           self.randomFactsItems.insert(randomFact, at: 0)
-        case .failure(let error):
-          print(error)
+        case .failure( _):
+          break
         }
       }
     }
@@ -84,10 +87,18 @@ extension ViewController: UITableViewDataSource {
     return randomFactsItems.count
   }
   
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      
+      randomFactsItems.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+  }
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "randomFactsTableViewCell", for: indexPath) as?
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: ViewConstants.randomFactsTableCell, for: indexPath) as?
       RandomFactsTableViewCell else {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "randomFactsTableViewCell")
+        let cell = UITableViewCell(style: .default, reuseIdentifier: ViewConstants.randomFactsTableCell)
         return cell
     }
     

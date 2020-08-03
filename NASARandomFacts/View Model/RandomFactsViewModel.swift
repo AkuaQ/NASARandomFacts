@@ -47,7 +47,8 @@ struct RandomFactsViewModel: RandomFactsViewModelable {
     
     let date = calendar.date(from: dateComponents) ?? Date()
     let rangeOfDays = calendar.range(of: .day, in: .month, for: date)
-    let numDays = rangeOfDays?.count ?? 30
+    let defaultDaysInMonth = 30
+    let numDays = rangeOfDays?.count ?? defaultDaysInMonth
     return numDays
   }
   
